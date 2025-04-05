@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    {{-- Navegación para usuarios autenticados --}}
+   
     @auth
         @include('layouts.navigation')
     @else
@@ -17,14 +17,14 @@
     @endauth
 
     <main class="container mt-4">
-        {{-- Mensaje de éxito --}}
+       
         @if(session('success'))
             <div class="alert alert-success">
-                {{ session('success') }}
+              
             </div>
         @endif
 
-        {{-- Contenido dinámico de cada vista --}}
+        
         @yield('content')
     </main>
 

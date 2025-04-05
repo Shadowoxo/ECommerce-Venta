@@ -14,7 +14,7 @@
             <a href="{{ route('products.index') }}" class="text-pink-500 hover:underline font-medium">Ver productos</a>
         </div>
     @else
-        <!-- Tabla de carrito -->
+    
         <div class="overflow-x-auto bg-white dark:bg-gray-800 shadow-md rounded-lg">
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm text-gray-800 dark:text-gray-100">
                 <thead class="bg-gray-100 dark:bg-gray-700 uppercase text-xs font-medium">
@@ -51,7 +51,7 @@
             </table>
         </div>
 
-        <!-- Total y finalizar -->
+
         <div class="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
             <h2 class="text-xl font-bold text-gray-900 dark:text-white">
                 Total: <span class="text-blue-600">${{ number_format($total, 2) }}</span>

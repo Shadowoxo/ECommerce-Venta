@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    // Mostrar productos en el carrito
+   
     public function index()
     {
         $cartItems = Auth::user()->cart()->with('product')->get();
@@ -18,7 +18,7 @@ class CartController extends Controller
         return view('cart.index', compact('cartItems', 'total'));
     }
 
-    // Agregar producto al carrito
+   
     public function add(Request $request, Product $product)
     {
         $validated = $request->validate([
@@ -33,7 +33,7 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success', 'Producto agregado al carrito');
     }
 
-    // Eliminar producto del carrito
+
     public function remove($id)
     {
         $item = Cart::findOrFail($id);
@@ -44,11 +44,10 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success', 'Producto eliminado del carrito');
     }
 
-    // Checkout simulado
     public function checkout()
     {
-        // Aquí podrías guardar una orden real si tuvieras lógica para eso
-        Auth::user()->cart()->delete(); // Vacía el carrito
+        
+        Auth::user()->cart()->delete(); 
         return redirect()->route('checkout.success');
     }
 }

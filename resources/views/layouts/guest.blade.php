@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    {{-- Navegación para usuarios no autenticados --}}
+    
     @include('layouts.navigation-guest')
 
     <main class="container mt-4">

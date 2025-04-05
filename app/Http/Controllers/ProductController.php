@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    // Mostrar productos con búsqueda, filtros y paginación
+   
     public function index(Request $request)
     {
         $query = Product::query();
 
-        // Filtro: búsqueda por nombre o descripción
+       
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
@@ -21,7 +21,7 @@ class ProductController extends Controller
             });
         }
 
-        // Filtro: rango de precios
+       
         if ($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);
         }
@@ -30,12 +30,12 @@ class ProductController extends Controller
             $query->where('price', '<=', $request->max_price);
         }
 
-        // Filtro: categorías
+      
         if ($request->filled('categories')) {
             $query->whereIn('category', $request->categories);
         }
 
-        // Filtro: etiquetas
+        
         if ($request->filled('tags')) {
             $query->where(function ($q) use ($request) {
                 foreach ($request->tags as $tag) {
@@ -44,19 +44,19 @@ class ProductController extends Controller
             });
         }
 
-        // Paginación de resultados
+        
         $products = $query->paginate(12)->withQueryString();
 
         return view('products.index', compact('products'));
     }
 
-    // Formulario para crear
+    
     public function create()
     {
         return view('products.create');
     }
 
-    // Guardar producto nuevo
+    
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -78,19 +78,19 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Producto creado correctamente.');
     }
 
-    // Mostrar detalle
+   
     public function show(Product $product)
     {
         return view('products.show', compact('product'));
     }
 
-    // Formulario de edición
+   
     public function edit(Product $product)
     {
         return view('products.edit', compact('product'));
     }
 
-    // Actualizar producto
+   
     public function update(Request $request, Product $product)
     {
         $data = $request->validate([
@@ -116,7 +116,7 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Producto actualizado correctamente.');
     }
 
-    // Eliminar producto
+    
     public function destroy(Product $product)
     {
         if ($product->image) {

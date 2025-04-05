@@ -17,34 +17,34 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <!-- Nombre -->
+              
                 <div class="flex flex-col mb-5">
                     <label for="name" class="mb-1 text-xs tracking-wide dark:text-gray-300 light:text-gray-600">Nombre:</label>
                     <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus class="block mt-1 w-full">
                     @error('name') <div class="text-red-600 mt-1">{{ $message }}</div> @enderror
                 </div>
 
-                <!-- Correo -->
+              
                 <div class="flex flex-col mb-5">
                     <label for="email" class="mb-1 text-xs tracking-wide dark:text-gray-300 light:text-gray-600">Correo electrónico:</label>
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required class="block mt-1 w-full">
                     @error('email') <div class="text-red-600 mt-1">{{ $message }}</div> @enderror
                 </div>
 
-                <!-- Contraseña -->
+              
                 <div class="flex flex-col mb-5">
                     <label for="password" class="mb-1 text-xs tracking-wide dark:text-gray-300 light:text-gray-600">Contraseña:</label>
                     <input id="password" type="password" name="password" required class="block mt-1 w-full">
                     @error('password') <div class="text-red-600 mt-1">{{ $message }}</div> @enderror
                 </div>
 
-                <!-- Confirmación -->
+               
                 <div class="flex flex-col mb-5">
                     <label for="password_confirmation" class="mb-1 text-xs tracking-wide dark:text-gray-300 light:text-gray-600">Confirmar contraseña:</label>
                     <input id="password_confirmation" type="password" name="password_confirmation" required class="block mt-1 w-full">
                 </div>
 
-                <!-- Botón -->
+               
                 <div class="flex items-center justify-end mt-4">
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </div>

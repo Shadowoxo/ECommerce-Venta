@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-    <!-- Session Status -->
+   
     @if (session('status'))
         <div class="mb-4 text-green-600">
             {{ session('status') }}
@@ -23,14 +23,14 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <!-- Email -->
+              
                 <div class="mt-4">
                     <label for="email" class="block text-sm text-gray-700">Correo electrónico</label>
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus class="block mt-1 w-full">
                     @error('email') <div class="text-red-600 mt-1">{{ $message }}</div> @enderror
                 </div>
 
-                <!-- Password -->
+               
                 <div class="mt-4">
                     <label for="password" class="block text-sm text-gray-700">Contraseña</label>
                     <input id="password" type="password" name="password" required class="block mt-1 w-full">

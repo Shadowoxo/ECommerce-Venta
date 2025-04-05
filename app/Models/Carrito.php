@@ -15,19 +15,19 @@ class Cart extends Model
         'quantity',
     ];
 
-    // Relación con producto
+   
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-    // Relación con usuario
+    
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Subtotal del producto en el carrito
+    
     public function getSubtotalAttribute()
     {
         return $this->quantity * $this->product->price;
