@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    // Campos que se pueden llenar masivamente
+   
     protected $fillable = [
         'name',
         'description',
@@ -19,9 +19,6 @@ class Product extends Model
         'tags',
     ];
 
-    /**
-     * Devuelve las etiquetas como array separadas por coma
-     */
     public function getTagsArrayAttribute()
     {
         return explode(',', $this->tags);

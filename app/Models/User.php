@@ -40,17 +40,13 @@ class User extends Authenticatable
         return $this->hasMany(Cart::class);
     }
 
-    /**
-     * Relación: un usuario tiene muchas compras.
-     */
+  
     public function compras()
     {
         return $this->hasMany(Compra::class);
     }
 
-    /**
-     * Verifica si el usuario es administrador.
-     */
+ 
     public function isAdmin()
     {
         return $this->role === 'admin';

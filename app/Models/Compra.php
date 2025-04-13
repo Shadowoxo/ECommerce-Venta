@@ -12,7 +12,7 @@ class Compra extends Model
     protected $fillable = [
         'user_id',
         'total',
-        'status', // Ejemplo: 'pendiente', 'completada'
+        'status', 
     ];
 
     public function user()
