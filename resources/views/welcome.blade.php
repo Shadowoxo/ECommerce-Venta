@@ -2,7 +2,6 @@
 
 @section('title', 'Bienvenido a nuestra tienda')
 
-
 @section('content')
     <div class="hero min-h-screen bg-gradient-to-r from-sky-100 via-sky-200 to-sky-300 dark:from-neutral dark:via-neutral-700 dark:to-neutral-800">
         <div class="hero-content flex-col md:flex-row-reverse items-center gap-10">
@@ -12,7 +11,7 @@
 
             <div class="max-w-3xl">
                 <h1 class="text-5xl font-extrabold text-gray-800 dark:text-white leading-tight">
-                    Todo lo que necesitas en un solo lugar
+                    Todo lo que necesitas en un solo lugar2
                 </h1>
                 <p class="py-6 text-lg text-gray-600 dark:text-gray-300">
                     Explora nuestra tienda en línea y encuentra productos de calidad al mejor precio. Compra desde casa con total seguridad y confianza.
