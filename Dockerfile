@@ -1,22 +1,35 @@
-FROM richarvey/nginx-php-fpm:3.1.6
+FROM php:8.2-fpm
 
+# Instala dependencias del sistema y extensiones PHP necesarias para Laravel + PostgreSQL
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    zip unzip git curl vim \
+    jpegoptim optipng pngquant gifsicle \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
+
+# Instala Composer globalmente
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Establece el directorio de trabajo
+WORKDIR /var/www
+
+# Copia el contenido del proyecto
 COPY . .
 
-# Configuración de la imagen
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
+# Instala dependencias PHP de producción
+RUN composer install --no-dev --optimize-autoloader
 
-# Configuración de Laravel
-ENV APP_ENV production
-ENV APP_DEBUG false
-ENV LOG_CHANNEL stderr
+# Da permisos adecuados para Laravel
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www/storage \
+    && chmod -R 755 /var/www/bootstrap/cache
 
-# Permitir que Composer se ejecute como root
-ENV COMPOSER_ALLOW_SUPERUSER 1
-# Dar permisos al script de despliegue
-RUN chmod +x scripts/00-laravel-deploy.sh
+# Exponer puerto 8000 (Laravel servirá aquí)
+EXPOSE 8000
 
-CMD ["/start.sh"]
+# Comando para servir la aplicación Laravel
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
