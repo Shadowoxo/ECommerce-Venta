@@ -1,9 +1,19 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Mi Tienda')</title>
 
-@section('title', 'Dashboard')
+    {{-- Archivos CSS y JS con Vite --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
 
-@section('content')
-    <h1 class="text-2xl font-bold mb-4">Bienvenido a tu Panel</h1>
+    {{-- Contenido de la vista hija --}}
+    <main class="min-h-screen">
+        @yield('content')
+    </main>
 
-   
-@endsection
+</body>
+</html>

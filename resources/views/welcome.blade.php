@@ -2,6 +2,7 @@
 
 @section('title', 'Bienvenido a nuestra tienda')
 
+
 @section('content')
     <div class="hero min-h-screen bg-gradient-to-r from-sky-100 via-sky-200 to-sky-300 dark:from-neutral dark:via-neutral-700 dark:to-neutral-800">
         <div class="hero-content flex-col md:flex-row-reverse items-center gap-10">
